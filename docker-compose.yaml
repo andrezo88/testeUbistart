@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: node app.js
+    tty: true
+    stdin_open: true
+    restart: on-failure
+    environment:
+      - MONGO_URI=mongodb://root:example@mongo-db:27017/?retryWrites=true&w=majority
+      - PORT=5001
+      - SECRET_JWT=por@ta!de##acesso
+    volumes:
+      - ./:/app
+    ports:
+      - "5001:5001"
+    depends_on:
+      - mongo-db
+
+  mongo-db:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
