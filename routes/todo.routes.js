@@ -6,7 +6,7 @@ const router = Router();
 router.get("/", async (req, res) => {
     const userId = req.user.id;
     try {
-        const userFromDb = await User.findById(userId).populate("todos");
+        const userFromDb = await User.findById(userId).populate("todos").lean();
         const allTodos = userFromDb.todos;
         allTodos.forEach(todo => {
             const dateNow = new Date()
@@ -14,6 +14,25 @@ router.get("/", async (req, res) => {
             todo.isLate = dateNow > todo.dueDate
         })
         res.status(200).json(allTodos);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.get("/late", async (req, res) => {
+    const userId = req.user.id;
+    try {
+        const userFromDb = await User.findById(userId).populate("todos").lean();
+        const allTodos = userFromDb.todos;
+        allTodos.forEach(todo => {
+            const dateNow = new Date()
+            dateNow.setHours(0, 0, 0, 0);
+            todo.isLate = dateNow > todo.dueDate
+        })
+        const filteredTodos = allTodos.filter(todo => {
+            return todo.isLate
+        })
+        res.status(200).json(filteredTodos);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

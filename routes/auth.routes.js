@@ -27,6 +27,7 @@ router.post("/signup", async (req, res) => {
             password: hash,
             roles
         });
+
         res.status(201).json({
             name: newUser.name,
             email: newUser.email,
