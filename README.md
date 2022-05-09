@@ -55,9 +55,9 @@ Executar o docker para configurar a utilização da API.
 | DELETE | /todos/:id | -                                | { message }     | Deleta o TODO |
 | GET    | /adm/      | -                                | [{ TODOs }]      | Mostra os TODOs de todos os usuários.|
 
-¹: Todos os endpoints com exceção dos que iniciam com `/auth` devem user o token (bearer) como autorização no cabeçalho.
-²: Para criar o usuário deve informar o role em forma de número: Admin: 5150, User: 2001.
-*: Campo obrigatório.
+- ¹: Todos os endpoints com exceção dos que iniciam com `/auth` devem user o token (bearer) como autorização no cabeçalho.
+- ²: Para criar o usuário deve informar o role em forma de número: Admin: 5150, User: 2001.
+- *: Campo obrigatório.
 
 ### Payload fields:
 
