@@ -41,10 +41,9 @@ Local:
 Executar o docker para configurar a utilização da API. 
 
 - Para navegar entre as páginas é necessário utilizar a query `pg`, como por exemplo: ``/adm?pg=1``
- 
 -- A quantidade de itens listado por página foi definido por 10 itens por página, caso queira alterar a quantidade para 5 itens por página por exemplo, utilizar: ``/adm?pg=1&limit=5``
 
--Para retornar apenas os itens em atraso utilizar a query `isLate` como por exemplo: ``/adm?isLate=true``
+- Para retornar apenas os itens em atraso utilizar a query `isLate` como por exemplo: ``/adm?isLate=true``
 
 ## Endpoints:
 
