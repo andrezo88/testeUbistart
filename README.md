@@ -92,4 +92,4 @@ Todo: {
 ### Decisões tomadas:
 
 - Eu decidi utilizar o banco de dados MongoDB, pois tenho maior familiaridade, mas irei estudando e refazer o teste utilizando o banco de dados MySQL.
--- teste
+- Criei um seed para gerar um usuário Admin para os teste, e se já tiver sido criado ele irá avisar que já tem o usuário admin, porém sem travar o aplicativo. 
