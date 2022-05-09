@@ -86,3 +86,10 @@ Todo: {
     user: ObjectId
 }
 ```
+
+---
+
+### Decisões tomadas:
+
+- Eu decidi utilizar o banco de dados MongoDB, pois tenho maior familiaridade, mas irei estudando e refazer o teste utilizando o banco de dados MySQL.
+-- teste
