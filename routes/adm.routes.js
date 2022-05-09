@@ -15,7 +15,7 @@ router.get("/", verifyRoles(ROLES_LIST.Admin), async (req, res) => {
     const skip = (pg - 1) * limit;
     try {
 
-        const allTodos = await Todo.find().skip(skip).limit(limit).populate("user", { email: 1 }).select("title dueDate").lean()
+        const allTodos = await Todo.find().skip(skip).limit(limit).populate("user", { email: 1 }).select(" title dueDate ").lean()
         allTodos.forEach(todo => {
             const dateNow = new Date()
             dateNow.setHours(0, 0, 0, 0);

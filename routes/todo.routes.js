@@ -46,7 +46,6 @@ router.post("/", async (req, res) => {
         res.status(200).json(newTodo);
     } catch (error) {
         res.status(500).json({ error: error.message });
-        console.log(error)
     }
 });
 
