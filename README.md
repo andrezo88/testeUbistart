@@ -23,11 +23,11 @@ Todo server utiliza:
 
 - nodejs;
 - express;
-- MongoDB
-- Mongoose
+- MongoDB;
+- Mongoose;
 - json web token;
-- bcryptjs.
-- dotenv
+- bcryptjs;
+- dotenv;
 
 ---
 
