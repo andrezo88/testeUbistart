@@ -6,7 +6,7 @@ const router = Router();
 router.get("/", async (req, res) => {
     const userId = req.user.id;
     try {
-        const userFromDb = await User.findById(userId).populate("todos").lean();
+        const userFromDb = await User.findById(userId).populate("todos", { title: 1, dueDate: 1, completed: 1 }).lean();
         const allTodos = userFromDb.todos;
         allTodos.forEach(todo => {
             const dateNow = new Date()
@@ -14,25 +14,6 @@ router.get("/", async (req, res) => {
             todo.isLate = dateNow > todo.dueDate
         })
         res.status(200).json(allTodos);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-router.get("/late", async (req, res) => {
-    const userId = req.user.id;
-    try {
-        const userFromDb = await User.findById(userId).populate("todos").lean();
-        const allTodos = userFromDb.todos;
-        allTodos.forEach(todo => {
-            const dateNow = new Date()
-            dateNow.setHours(0, 0, 0, 0);
-            todo.isLate = dateNow > todo.dueDate
-        })
-        const filteredTodos = allTodos.filter(todo => {
-            return todo.isLate
-        })
-        res.status(200).json(filteredTodos);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -52,10 +33,15 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
     const { id } = req.params;
     const userId = req.user.id;
+    const itemCompleted = req.body.completed
+
+
     try {
         const updateTodo = await Todo.findByIdAndUpdate({ _id: id, user: userId }, req.body, {
             new: true
         });
+        if (itemCompleted)
+            return res.status(401).json("Não é possível alterar item concluído.")
         if (!updateTodo) {
             throw new Error("Não é possível atualizar item de outro usuário.")
         }
