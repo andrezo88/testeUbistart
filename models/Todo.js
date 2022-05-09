@@ -16,6 +16,7 @@ const todoSchema = new Schema({
     },
     completedAt: {
         type: Date,
+        Default: Date.now
     },
     user: {
         type: Schema.Types.ObjectId,

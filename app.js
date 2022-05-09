@@ -2,10 +2,16 @@ require("dotenv").config();
 var express = require('express');
 const connectDb = require("./config/db.config");
 const ROLE_LIST = require("./config/role_list");
+const createAdminUser = require("./seed/admSeeder")
+
+
 var app = express();
 
 //Db conection
-connectDb();
+connectDb().then(() => {
+    createAdminUser();
+});
+
 
 app.use(express.json())
 

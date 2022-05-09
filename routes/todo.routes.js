@@ -6,7 +6,7 @@ const router = Router();
 router.get("/", async (req, res) => {
     const userId = req.user.id;
     try {
-        const userFromDb = await User.findById(userId).populate("todos", { title: 1, dueDate: 1, completed: 1 }).lean();
+        const userFromDb = await User.findById(userId).populate("todos", { title: 1, dueDate: 1 }).lean();
         const allTodos = userFromDb.todos;
         allTodos.forEach(todo => {
             const dateNow = new Date()

@@ -33,20 +33,4 @@ router.get("/", verifyRoles(ROLES_LIST.Admin), async (req, res) => {
     }
 });
 
-
-
-
-router.post("/", verifyRoles(ROLES_LIST.Admin), async (req, res) => {
-    const userId = req.user.id;
-    try {
-        const newTodo = await Todo.create({ ...req.body, user: userId });
-        await User.findByIdAndUpdate(userId, { $push: { todos: newTodo._id } });
-        res.status(200).json(newTodo);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-
-
 module.exports = router;
