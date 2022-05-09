@@ -25,7 +25,6 @@ app.use(require("./middleware/auth.middleware"));
 
 //Private Routes
 
-//app.use("/user", require("./routes/user.routes"));
 app.use("/todos", require("./routes/todo.routes"));
 
 //adm middleware
