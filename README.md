@@ -1,10 +1,6 @@
-# TESTE TODO Ubistart
+# TESTE TODO
 
-This is a RESTful API para o teste de desenvolvedor back-end da empresa Ubistart.
-
----
-
-[Teste Ubistart](https://github.com/andrezo88/testeUbistart)
+This is a RESTful API para TODOs.
 
 ---
 
